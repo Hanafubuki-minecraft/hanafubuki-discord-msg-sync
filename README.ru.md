@@ -1,40 +1,40 @@
-# Minecraft Discord Message Sync
+<div align="center">
 
-Paper-плагин, который связывает чат Minecraft-сервера с каналом Discord — сообщения синхронизируются в обе стороны.
+# HanafubukiDiscordSync
 
-[English](./README.md)
+**Мост чата Minecraft ↔ Discord для Hanafubuki — каждый игрок пишет со своим ником и головой.**
+
+[English](README.md) · Русский
+
+</div>
 
 ## Как работает
 
-- Игрок пишет в чате Minecraft → сообщение появляется в Discord
-- Кто-то пишет в Discord → сообщение появляется в чате Minecraft
-
-## Требования
-
-- Java 21
-- Paper 1.21+
-- Discord-бот с включённым `Message Content Intent`
+- **Minecraft → Discord** идёт через **вебхук**: у каждого сообщения ник игрока и голова его *текущего* скина (включая SkinsRestorer и Bedrock), поэтому канал выглядит как живой разговор, а не как один бот.
+- **Системные строки** — сервер запущен/остановлен, тихие входы и выходы, тёплое «впервые на сервере» — от «Hanafubuki» с логотипом. Смерти и достижения по умолчанию выключены.
+- **Discord → Minecraft** требует бота (вебхук не умеет читать). Сообщения в игре — `◆ Ник › текст` в палитре сервера.
+- Бот показывает онлайн в статусе и **сам создаёт вебхук** (нужно право *Управление вебхуками*), так что в конфиге — только токен и ID канала.
+- JDA не вшит: Paper скачивает его при первом запуске, jar весит килобайты.
 
 ## Настройка
 
-Перед сборкой отредактируй `src/main/java/org/example/Settings.java`:
+1. [Discord Developer Portal](https://discord.com/developers/applications) → приложение → **Bot**: включи **Message Content Intent**, скопируй токен.
+2. Пригласи бота с правами: *Просмотр канала*, *Отправка сообщений*, *Чтение истории*, *Управление вебхуками*.
+3. `plugins/HanafubukiDiscordSync/config.yml`: укажи `discord.token` и `discord.channel-id`, перезапусти сервер.
 
-```java
-private static final String TOKEN = "ТОКЕН_ТВОЕГО_БОТА";
-private static final long CHANNEL_ID = 123456789012345678L; // ID целевого канала
-```
+## Команды
 
-## Сборка и установка
+| Команда | Описание | Право |
+|---|---|---|
+| `/discordsync reload` (`/ds`) | Перезагрузить конфиг и тексты | `hanafubuki.discord.admin` (op) |
+| `/discordsync status` | Версия и состояние вебхука | `hanafubuki.discord.admin` |
 
-```bash
-mvn package
-```
+Имя команды и алиасы — `config.yml` → `commands`. Палитра — `config.yml` → `style`. Тексты — `messages.yml`.
 
-Положи `.jar` из папки `target/` в папку `plugins/` сервера и перезапусти его.
+## Релизы
 
-## Технологии
+Поднимаешь `version` в [`gradle.properties`](gradle.properties) и пушишь в `master`.
 
-- Java 21
-- Paper API 1.21
-- JDA 5.3.0
-- Maven + Shade plugin
+## Лицензия
+
+[GNU General Public License v3.0](LICENSE) © ByteMe6

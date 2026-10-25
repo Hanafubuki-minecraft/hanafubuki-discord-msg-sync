@@ -1,0 +1,23 @@
+# Hanafubuki Discord sync — texts
+# game.*    — in Minecraft (MiniMessage, palette tags from config.yml → style)
+# discord.* — in Discord (Markdown; "-# " at the start makes a small grey line). {name} etc. are replaced.
+# Style: https://github.com/Hanafubuki-minecraft/hanafubuki-brand/blob/main/STYLE.md
+
+game:
+  # Discord → Minecraft. <name> — Discord display name, <message> — text
+  from-discord: "<dim>◆</dim> <accent><name></accent> <dim>›</dim> <text><message></text>"
+  attachment: "[вложение]"
+  reloaded: "<accent><symbol></accent> <success>Конфиг и тексты перезагружены.</success> <dim>Токен и канал — после рестарта.</dim>"
+  status: "<accent><symbol></accent> <muted>Discord sync <text><version></text> · вебхук <text><webhook></text></muted>"
+  usage: "<accent><symbol></accent> <muted>Использование: <text>/<label> reload</text> <dim>·</dim> <text>/<label> status</text></muted>"
+
+discord:
+  server-start: "❀ Сервер запущен — заходите!"
+  server-stop: "-# ❀ Сервер остановлен"
+  join: "-# ❀ {name} заходит"
+  quit: "-# {name} выходит"
+  first-join: "❀ Встречайте **{name}** — впервые на Hanafubuki!"
+  death: "-# {message}"
+  advancement: "-# {name} получает достижение «{advancement}»"
+  # Bot status (Playing …)
+  status: "{online}/{max} на Hanafubuki"

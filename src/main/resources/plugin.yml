@@ -1,6 +1,15 @@
-
-name: DiscordMsgSync
-version: 1.0-RELEASE
-main: org.example.Main
-api-version: '1.21.9'
+name: HanafubukiDiscordSync
+version: '${version}'
+main: com.hanafubuki.discord.DiscordSyncPlugin
+api-version: '1.21'
 author: ByteMe6
+website: https://github.com/Hanafubuki-minecraft/hanafubuki-discord-msg-sync
+description: Minecraft ↔ Discord chat bridge for Hanafubuki — players post with their own name and head
+# JDA скачивается Paper'ом при запуске — в jar его нет
+libraries:
+  - net.dv8tion:JDA:5.3.0
+# Commands are registered from config.yml → commands
+permissions:
+  hanafubuki.discord.admin:
+    description: /discordsync reload | status
+    default: op
