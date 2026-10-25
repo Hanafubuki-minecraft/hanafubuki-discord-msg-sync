@@ -60,8 +60,9 @@ public final class DiscordSyncPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         if (getConfig().getBoolean("events.start-stop", true) && webhook != null && webhook.ready()) {
-            webhook.send(systemName(), systemAvatar(), messages.discord("server-stop"), true);
+            webhook.sendNow(systemName(), systemAvatar(), messages.discord("server-stop"));
         }
+        if (webhook != null) webhook.shutdown();
         if (bot != null) bot.shutdown();
     }
 

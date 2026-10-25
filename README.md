@@ -18,6 +18,7 @@ English · [Русский](README.ru.md)
 - **System lines** — server started/stopped, quiet join/leave, a warm "first time here" — come from "Hanafubuki" with the logo. Deaths and advancements are off by default.
 - **Discord → Minecraft** needs a bot (webhooks can't read). Messages appear as `◆ Name › text` in the server palette.
 - The bot shows the player count in its status and **creates the webhook itself** (needs *Manage Webhooks*), so the config only needs a token and a channel ID.
+- All Discord traffic runs on a dedicated `HanafubukiDiscord-Webhook` thread: chat and server ticks only enqueue and never wait for Discord; sending is sequential and respects Discord rate limits (429 → wait and retry).
 - JDA isn't bundled: Paper downloads it on first start, so the jar is tiny.
 
 ## Setup

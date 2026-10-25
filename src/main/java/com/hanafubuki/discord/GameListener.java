@@ -37,6 +37,7 @@ public final class GameListener implements Listener {
         return s.replace("\\", "\\\\").replace("_", "\\_").replace("*", "\\*").replace("~", "\\~").replace("`", "\\`").replace("|", "\\|");
     }
 
+    /** Чат уже асинхронный; здесь только готовим текст и кладём в очередь — сеть в отдельном потоке. */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onChat(AsyncChatEvent e) {
         if (!on("chat")) return;
