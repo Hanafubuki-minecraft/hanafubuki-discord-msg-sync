@@ -1,0 +1,4 @@
+# Применить: /discordsync reload
+events:
+  deaths: true
+  advancements: true

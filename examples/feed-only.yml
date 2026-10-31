@@ -1,0 +1,7 @@
+# Применить: /discordsync reload
+events:
+  chat: true
+  discord-to-game: false
+  start-stop: true
+  join-quit: true
+  first-join: true

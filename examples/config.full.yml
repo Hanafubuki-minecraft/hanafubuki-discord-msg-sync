@@ -1,0 +1,48 @@
+# Hanafubuki Discord sync
+# Apply text/event changes with /discordsync reload (token and channel — after a restart)
+
+discord:
+  # Bot token (Discord Developer Portal → your app → Bot → Reset Token). Keep it secret.
+  token: ""
+  # ID of the channel to sync (Discord: Developer Mode → right click the channel → Copy ID)
+  channel-id: 0
+  # Webhook for sending to Discord. Empty — the bot finds or creates one named "Hanafubuki" itself
+  # (the bot needs the "Manage Webhooks" permission in that channel)
+  webhook-url: ""
+  # Bot status with the player count: "Playing 3/20 on Hanafubuki"
+  status: true
+  # Name and avatar for system messages (start/stop, joins)
+  system-name: "Hanafubuki"
+  system-avatar: "https://raw.githubusercontent.com/Hanafubuki-minecraft/hanafubuki-brand/main/export/discord/hanafubuki-discord-icon-512.png"
+  # Player avatar: {id} — the texture of the player's current skin (or the nickname if there is none)
+  player-avatar: "https://mc-heads.net/avatar/{id}/64"
+
+events:
+  # Minecraft chat → Discord, each player with their own name and head
+  chat: true
+  # Discord channel → Minecraft chat
+  discord-to-game: true
+  # "Server started / stopped"
+  start-stop: true
+  # Quiet join/leave lines
+  join-quit: true
+  # "Welcome X — first time on Hanafubuki!"
+  first-join: true
+  deaths: false
+  advancements: false
+
+# Commands: name, aliases, enabled. Restart to apply.
+commands:
+  admin: { enabled: true, name: discordsync, aliases: [ds] }
+
+# Palette of in-game messages (tags in messages.yml → game: <accent> <text> <muted> <dim> <success> <error> <gold>, <symbol>)
+# Hanafubuki style: https://github.com/Hanafubuki-minecraft/hanafubuki-brand/blob/main/STYLE.md
+style:
+  symbol: "❀"
+  accent: "#F7A1C0"
+  text: "#F4EEF6"
+  muted: "#C9BED3"
+  dim: "#9488A6"
+  success: "#A8E6B5"
+  error: "#FF8A9B"
+  gold: "#FFCF6B"

@@ -43,3 +43,7 @@ Bump `version` in [`gradle.properties`](gradle.properties) and push to `master`.
 ## License
 
 [GNU General Public License v3.0](LICENSE) © ByteMe6
+
+## Configuration examples
+
+All settings with defaults and descriptions, plus ready-made snippets for common setups: [`examples/`](examples/).
